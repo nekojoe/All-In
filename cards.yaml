@@ -1,0 +1,151 @@
+# Idea: nekojoe
+# Art: nekojoe
+Rare Coin:
+  Description: "{start_trigger}On play:{end_trigger} 1 in 2 to make opponent stand.\\n{start_trigger}On discard:{end_trigger} gain 25 chips"
+  Image: rare_coin.png
+  Foil: foil_rare_coin.png
+  Value: 1
+  Suit: special 
+  Triggers:
+    Play: rare_coin_play.gd.j2
+    Discarded: rare_coin_discard.gd.j2
+  Identifier: all_in_rare_coin
+
+# Idea: tech_wizard72
+# Art: nekojoe
+4 Squared:
+  Description: "{start_trigger}On play:{end_trigger} set value to 4.\\n{start_trigger}On {keyword_exploit}:{end_trigger} +4 value to this card, then {keyword_quick_discard} a card."
+  Image: 4_squared.png
+  Foil: foil_4_squared.png
+  Value: 4
+  Suit: special 
+  Triggers:
+    Clicked: 4_squared_click.gd.j2
+  Keywords:
+    - EXPLOIT
+    - QUICK_DISCARD
+  Identifier: all_in_4_squared
+
+# Idea: squeaky_duck
+# Art: squeaky_duck
+Gamma:
+  Description: "{start_trigger}On play:{end_trigger} choose a card to multiply value by -1."
+  Image: gamma.png
+  Foil: foil_gamma.png
+  Value: 0
+  Suit: special 
+  Triggers:
+    Play: gamma_play.gd.j2
+  Identifier: all_in_gamma
+
+# Idea: squeaky_duck
+# Art: nekojoe
+Infinity of Spades:
+  Description: ""
+  Image: infinity_of_spades.png
+  Foil: foil_infinity_of_spades.png
+  Value: 999
+  Suit: spades 
+  Identifier: all_in_infinity_of_spades
+
+# Idea: squeaky_duck
+# Art: nekojoe
+Infinity of Clubs:
+  Description: ""
+  Image: infinity_of_clubs.png
+  Foil: foil_infinity_of_clubs.png
+  Value: 999
+  Suit: clubs
+  Identifier: all_in_infinity_of_clubs
+
+# Idea: squeaky_duck
+# Art: nekojoe
+Infinity of Diamonds:
+  Description: ""
+  Image: infinity_of_diamonds.png
+  Foil: foil_infinity_of_diamonds.png
+  Value: 999
+  Suit: diamonds
+  Identifier: all_in_infinity_of_diamonds
+
+# Idea: squeaky_duck
+# Art: nekojoe
+Infinity of Hearts:
+  Description: ""
+  Image: infinity_of_hearts.png
+  Foil: foil_infinity_of_hearts.png
+  Value: 999
+  Suit: hearts
+  Identifier: all_in_infinity_of_hearts
+
+# Idea: nekojoe
+# Art: nekojoe
+2 ^ Spades:
+  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+  Image: 2_power_of_spades.png
+  Foil: foil_2_power_of_spades.png
+  Value: 2
+  Suit: spades 
+  Triggers:
+    Play: 2_power_of_play.gd.j2
+    Hit: 2_power_of_clicked.gd.j2
+    Clicked: 2_power_of_clicked.gd.j2
+  Identifier: all_in_2_power_of_spades
+
+# Idea: nekojoe
+# Art: nekojoe
+2 ^ Clubs:
+  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+  Image: 2_power_of_clubs.png
+  Foil: foil_2_power_of_clubs.png
+  Value: 2
+  Suit: clubs 
+  Triggers:
+    Play: 2_power_of_play.gd.j2
+    Hit: 2_power_of_clicked.gd.j2
+    Clicked: 2_power_of_clicked.gd.j2
+  Identifier: all_in_2_power_of_clubs
+
+# Idea: nekojoe
+# Art: nekojoe
+2 ^ Diamonds:
+  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+  Image: 2_power_of_diamonds.png
+  Foil: foil_2_power_of_diamonds.png
+  Value: 2
+  Suit: diamonds 
+  Triggers:
+    Play: 2_power_of_play.gd.j2
+    Hit: 2_power_of_clicked.gd.j2
+    Clicked: 2_power_of_clicked.gd.j2
+  Identifier: all_in_2_power_of_diamonds
+
+# Idea: nekojoe
+# Art: nekojoe
+2 ^ Hearts:
+  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+  Image: 2_power_of_hearts.png
+  Foil: foil_2_power_of_hearts.png
+  Value: 2
+  Suit: hearts 
+  Triggers:
+    Play: 2_power_of_play.gd.j2
+    Hit: 2_power_of_clicked.gd.j2
+    Clicked: 2_power_of_clicked.gd.j2
+  Identifier: all_in_2_power_of_hearts
+
+# Idea: position_phive
+# Art: position_phive
+# Combat Ace:  
+#   Description: "{keyword_flexible}: (11 or 1).\\n{start_trigger}On play:{end_trigger} {keyword_burn} another Ace in play."  
+#   Image: combat_ace.png  
+#   Foil: foil_combat_ace.png
+#   Value: 11
+#   Suit: spades
+#   Triggers:
+#     Play: combat_ace_play.gd.j2
+#   Flexible: [1, 11]
+#   Keywords:  
+#     - FLEXIBLE
+#     - BURN
+#   Identifier: all_in_combat_ace

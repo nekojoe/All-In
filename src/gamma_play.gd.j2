@@ -1,0 +1,14 @@
+var both_play_piles = []
+var other_play_pile = []
+other_play_pile.append_array(other_player.play_pile.duplicate())
+other_play_pile.invert()
+both_play_piles.append_array(current_player.play_pile.duplicate())
+both_play_piles.append_array(other_play_pile)
+both_play_piles.erase(card)
+
+if both_play_piles.size() > 0:
+    {% call wait_for("current_player", "choice_made") %}
+    current_player.make_choice(card, both_play_piles, true)
+    {% endcall %}
+
+choice.set_card_value(choice.get_card_value() * -1)

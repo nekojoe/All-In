@@ -1,0 +1,7 @@
+name: All In
+description: D&DG, but the house never wins
+creator: DnDGMod Official Server
+version: 0.0.1
+#enabled: true
+exports:
+- cards

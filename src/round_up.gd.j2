@@ -1,0 +1,3 @@
+if current_player.get_node("ScoreCard").max_score - current_player.score > 0:
+    card.set_card_value(card.get_card_value() + 1)
+    current_player.get_parent().update_scores()
