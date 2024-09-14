@@ -1,0 +1,8 @@
+var shred_card = {{ shred_card}}
+
+if shred_card.get_parent().name == "Player":
+    current_player.burn_card(shred_card)
+    current_player.remove_card_from_deck(shred_card)
+else:
+    other_player.burn_card(shred_card)
+    other_player.remove_card_from_deck(shred_card)

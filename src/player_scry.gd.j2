@@ -1,0 +1,26 @@
+var choice_arr = []
+
+var Card = preload("res://Card.tscn")
+var choice_card = card.duplicate()
+choice_card.set_card_art("175")
+choice_card.add_action_choice_label("Done")
+choice_card.set_card_name("Done")
+choice_card.set_card_description("Done")
+
+for i in range(min({{ scry_amount }}, len(current_player.draw_pile))):
+    choice_arr.append(current_player.draw_pile[i])
+
+if len(choice_arr) < 1:
+    emit_signal('play_effect_completed')
+else:
+    choice_arr.append(choice_card)
+    {% call wait_for("current_player", "choice_made") %}
+    current_player.make_choice(card, choice_arr, true)
+    {% endcall %}
+
+if choice.card_name == "Done":
+    emit_signal('play_effect_completed')
+else:
+    arr.erase(choice)
+    current_player.draw_pile.erase(choice)
+    current_player.draw_pile.append(choice)

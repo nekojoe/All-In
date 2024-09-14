@@ -1,0 +1,24 @@
+var choice_arr = []
+var ignore_self = {{ ignore_self }}
+var sort = {{ sort }}
+var current_player_piles = {{ current_player_piles }}
+var other_player_piles = {{ other_player_piles }}
+
+for pile in other_player_piles:
+    var pile_arr = []
+    for _card in other_player[pile]:
+        pile_arr.append(_card)
+    if sort:
+        pile_arr.invert()
+    choice_arr.append_array(pile_arr)
+
+for pile in current_player_piles:
+    choice_arr.append_array(current_player[pile])
+
+if ignore_self:
+    choice_arr.erase(card)
+
+if len(choice_arr) > 0:
+    {% call wait_for("current_player", "choice_made") %}
+    current_player.make_choice(card, choice_arr, sort)
+    {% endcall %}

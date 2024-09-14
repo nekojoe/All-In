@@ -1,0 +1,6 @@
+var burn_card = {{ burn_card}}
+
+if burn_card.get_parent().name == "Player":
+    current_player.burn_card(burn_card)
+else:
+    other_player.burn_card(burn_card)

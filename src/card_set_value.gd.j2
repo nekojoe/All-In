@@ -1,0 +1,6 @@
+{{ value_card }}.set_card_value({{ set_value }})
+
+if {{ value_card }}.get_parent().name == "Player":
+    current_player.get_parent().update_scores()
+else:
+    other_player.get_parent().update_scores()

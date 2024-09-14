@@ -1,151 +1,300 @@
-# Idea: nekojoe
-# Art: nekojoe
 Rare Coin:
-  Description: "{start_trigger}On play:{end_trigger} 1 in 2 to make opponent stand.\\n{start_trigger}On discard:{end_trigger} gain 25 chips"
-  Image: rare_coin.png
-  Foil: foil_rare_coin.png
-  Value: 1
-  Suit: special 
-  Triggers:
-    Play: rare_coin_play.gd.j2
-    Discarded: rare_coin_discard.gd.j2
-  Identifier: all_in_rare_coin
+    description: "{start_trigger}On play:{end_trigger} 1 in 2 to make opponent stand.\\n{start_trigger}On discard:{end_trigger} gain 25 chips"
+    image: rare_coin.png
+    foil: foil_rare_coin.png
+    value: 1
+    suit: special
+    triggers:
+        play:
+            - {filename: chance_action.gd.j2, odds: 2}
+            - {filename: player_stand.gd.j2, stand_player: other_player}
+        discarded: 
+            - {filename: player_add_chips.gd.j2, chips_player: current_player, chips_value: 25}
+    identifier: all_in_rare_coin
 
-# Idea: tech_wizard72
-# Art: nekojoe
 4 Squared:
-  Description: "{start_trigger}On play:{end_trigger} set value to 4.\\n{start_trigger}On {keyword_exploit}:{end_trigger} +4 value to this card, then {keyword_quick_discard} a card."
-  Image: 4_squared.png
-  Foil: foil_4_squared.png
-  Value: 4
-  Suit: special 
-  Triggers:
-    Clicked: 4_squared_click.gd.j2
-  Keywords:
-    - EXPLOIT
-    - QUICK_DISCARD
-  Identifier: all_in_4_squared
+    description: "{start_trigger}On play:{end_trigger} set value to 4.\\n{start_trigger}On {keyword_exploit}:{end_trigger} +4 value to this card, then {keyword_quick_discard} a card."
+    image: 4_squared.png
+    foil: foil_4_squared.png
+    value: 4
+    suit: special
+    triggers:
+        clicked:
+            - {filename: card_add_value.gd.j2, value_card: card, add_value: 4}
+            - {filename: player_make_choice.gd.j2, current_player_piles: ["play_pile"], other_player_piles: ["play_pile"], ignore_self: "false", sort: "true"}
+            - {filename: card_discard.gd.j2, discard_card: choice}
+    keywords:
+        - EXPLOIT
+        - QUICK_DISCARD
+    identifier: all_in_4_squared
 
-# Idea: squeaky_duck
-# Art: squeaky_duck
 Gamma:
-  Description: "{start_trigger}On play:{end_trigger} choose a card to multiply value by -1."
-  Image: gamma.png
-  Foil: foil_gamma.png
-  Value: 0
-  Suit: special 
-  Triggers:
-    Play: gamma_play.gd.j2
-  Identifier: all_in_gamma
+    description: "{start_trigger}On play:{end_trigger} choose a card to multiply value by -1."
+    image: gamma.png
+    foil: foil_gamma.png
+    value: 0
+    suit: special
+    triggers:
+        play:
+            - {filename: player_make_choice.gd.j2, current_player_piles: ["play_pile"], other_player_piles: ["play_pile"], ignore_self: "false", sort: "true"}
+            - {filename: card_mult_value.gd.j2, value_card: choice, mult_value: -1}
+    identifier: all_in_gamma
 
-# Idea: squeaky_duck
-# Art: nekojoe
 Infinity of Spades:
-  Description: ""
-  Image: infinity_of_spades.png
-  Foil: foil_infinity_of_spades.png
-  Value: 999
-  Suit: spades 
-  Identifier: all_in_infinity_of_spades
+    description: "{start_trigger}On discard:{end_trigger} {keyword_shred} this card."
+    image: infinity_of_spades.png
+    foil: foil_infinity_of_spades.png
+    value: 999
+    suit: spades 
+    triggers:
+        discarded:
+            - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - SHRED
+    identifier: all_in_infinity_of_spades
 
-# Idea: squeaky_duck
-# Art: nekojoe
 Infinity of Clubs:
-  Description: ""
-  Image: infinity_of_clubs.png
-  Foil: foil_infinity_of_clubs.png
-  Value: 999
-  Suit: clubs
-  Identifier: all_in_infinity_of_clubs
+    description: "{start_trigger}On discard:{end_trigger} {keyword_shred} this card."
+    image: infinity_of_clubs.png
+    foil: foil_infinity_of_clubs.png
+    value: 999
+    suit: clubs
+    triggers:
+        discarded:
+            - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - SHRED
+    identifier: all_in_infinity_of_clubs
 
-# Idea: squeaky_duck
-# Art: nekojoe
 Infinity of Diamonds:
-  Description: ""
-  Image: infinity_of_diamonds.png
-  Foil: foil_infinity_of_diamonds.png
-  Value: 999
-  Suit: diamonds
-  Identifier: all_in_infinity_of_diamonds
+    description: "{start_trigger}On discard:{end_trigger} {keyword_shred} this card."
+    image: infinity_of_diamonds.png
+    foil: foil_infinity_of_diamonds.png
+    value: 999
+    suit: diamonds
+    triggers:
+        discarded:
+            - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - SHRED
+    identifier: all_in_infinity_of_diamonds
 
-# Idea: squeaky_duck
-# Art: nekojoe
 Infinity of Hearts:
-  Description: ""
-  Image: infinity_of_hearts.png
-  Foil: foil_infinity_of_hearts.png
-  Value: 999
-  Suit: hearts
-  Identifier: all_in_infinity_of_hearts
+    description: "{start_trigger}On discard:{end_trigger} {keyword_shred} this card."
+    image: infinity_of_hearts.png
+    foil: foil_infinity_of_hearts.png
+    value: 999
+    suit: hearts
+    triggers:
+        discarded:
+            - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - SHRED
+    identifier: all_in_infinity_of_hearts
 
-# Idea: nekojoe
-# Art: nekojoe
 2 ^ Spades:
-  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
-  Image: 2_power_of_spades.png
-  Foil: foil_2_power_of_spades.png
-  Value: 2
-  Suit: spades 
-  Triggers:
-    Play: 2_power_of_play.gd.j2
-    Hit: 2_power_of_clicked.gd.j2
-    Clicked: 2_power_of_clicked.gd.j2
-  Identifier: all_in_2_power_of_spades
+    description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On {keyword_exploit}:{end_trigger} double the value of this card."
+    image: 2_power_of_spades.png
+    foil: foil_2_power_of_spades.png
+    value: 2
+    suit: spades
+    triggers:
+        play:
+            - {filename: card_set_value.gd.j2, value_card: card, set_value: 2}
+        hit:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+        clicked:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+    keywords:
+        - EXPLOIT
+    identifier: all_in_2_power_of_spades
 
-# Idea: nekojoe
-# Art: nekojoe
 2 ^ Clubs:
-  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
-  Image: 2_power_of_clubs.png
-  Foil: foil_2_power_of_clubs.png
-  Value: 2
-  Suit: clubs 
-  Triggers:
-    Play: 2_power_of_play.gd.j2
-    Hit: 2_power_of_clicked.gd.j2
-    Clicked: 2_power_of_clicked.gd.j2
-  Identifier: all_in_2_power_of_clubs
+    description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On {keyword_exploit}:{end_trigger} double the value of this card."
+    image: 2_power_of_clubs.png
+    foil: foil_2_power_of_clubs.png
+    value: 2
+    suit: clubs
+    triggers:
+        play:
+            - {filename: card_set_value.gd.j2, value_card: card, set_value: 2}
+        hit:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+        clicked:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+    keywords:
+        - EXPLOIT
+    identifier: all_in_2_power_of_clubs
 
-# Idea: nekojoe
-# Art: nekojoe
 2 ^ Diamonds:
-  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
-  Image: 2_power_of_diamonds.png
-  Foil: foil_2_power_of_diamonds.png
-  Value: 2
-  Suit: diamonds 
-  Triggers:
-    Play: 2_power_of_play.gd.j2
-    Hit: 2_power_of_clicked.gd.j2
-    Clicked: 2_power_of_clicked.gd.j2
-  Identifier: all_in_2_power_of_diamonds
+    description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+    image: 2_power_of_diamonds.png
+    foil: foil_2_power_of_diamonds.png
+    value: 2
+    suit: diamonds
+    triggers:
+        play:
+            - {filename: card_set_value.gd.j2, value_card: card, set_value: 2}
+        hit:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+        clicked:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+    keywords:
+        - EXPLOIT
+    identifier: all_in_2_power_of_diamonds
 
-# Idea: nekojoe
-# Art: nekojoe
 2 ^ Hearts:
-  Description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
-  Image: 2_power_of_hearts.png
-  Foil: foil_2_power_of_hearts.png
-  Value: 2
-  Suit: hearts 
-  Triggers:
-    Play: 2_power_of_play.gd.j2
-    Hit: 2_power_of_clicked.gd.j2
-    Clicked: 2_power_of_clicked.gd.j2
-  Identifier: all_in_2_power_of_hearts
+    description: "{start_trigger}On play:{end_trigger} set value to 2.\\n{start_trigger}On hit and {keyword_exploit}:{end_trigger} double the value of this card."
+    image: 2_power_of_hearts.png
+    foil: foil_2_power_of_hearts.png
+    value: 2
+    suit: hearts 
+    triggers:
+        play:
+            - {filename: card_set_value.gd.j2, value_card: card, set_value: 2}
+        hit:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+        clicked:
+            - {filename: card_mult_value.gd.j2, value_card: card, mult_value: 2}
+    keywords:
+        - EXPLOIT
+    identifier: all_in_2_power_of_hearts
 
-# Idea: position_phive
-# Art: position_phive
-# Combat Ace:  
-#   Description: "{keyword_flexible}: (11 or 1).\\n{start_trigger}On play:{end_trigger} {keyword_burn} another Ace in play."  
-#   Image: combat_ace.png  
-#   Foil: foil_combat_ace.png
-#   Value: 11
-#   Suit: spades
-#   Triggers:
-#     Play: combat_ace_play.gd.j2
-#   Flexible: [1, 11]
-#   Keywords:  
-#     - FLEXIBLE
-#     - BURN
-#   Identifier: all_in_combat_ace
+Combat Ace:  
+    description: "{keyword_flexible}: (11 or 1).\\n{start_trigger}On play:{end_trigger} {keyword_burn} another Ace in play."
+    image: combat_ace.png  
+    foil: foil_combat_ace.png
+    value: 11
+    suit: spades
+    triggers:
+        play:
+            - {filename: player_make_choice.gd.j2, current_player_piles: ["play_pile"], other_player_piles: ["play_pile"], ignore_self: "true", sort: "true"}
+            - {filename: card_burn.gd.j2, burn_card: choice}
+    Flexible: [1, 11]
+    keywords:  
+        - FLEXIBLE
+        - BURN
+    identifier: all_in_combat_ace
+
+Pong:  
+    description: "{start_trigger}On hit:{end_trigger} move to opponents side.\\n{start_trigger}On stand:{end_trigger} take 1 damage."
+    image: pong.png
+    foil: foil_pong.png
+    value: 1
+    suit: clubs
+    triggers:
+        hit:
+            - {filename: card_move.gd.j2, move_card: card, move_player: current_player, move_from: play_pile, move_to: other_play_pile}
+        stand:
+            - {filename: player_deal_damage.gd.j2, damage_player: other_player, damage_value: 1}
+    identifier: all_in_pong
+
+Blood Sacrifice:
+    description: "{start_trigger}On {keyword_exploit}:{end_trigger} lose 5 HP, double bust limit, and {keyword_burn}."
+    image: blood_sacrifice.png
+    foil: foil_blood_sacrifice.png
+    value: 0
+    suit: hearts
+    triggers:
+        clicked: 
+            - {filename: player_deal_damage.gd.j2, damage_player: other_player, damage_value: 5}
+            - {filename: player_mult_bust_limit.gd.j2, bust_limit_player: current_player, bust_limit_mult_value: 2}
+            - {filename: card_burn.gd.j2, burn_card: card}
+    keywords:
+        - EXPLOIT
+        - BURN
+    identifier: all_in_blood_sacrifice
+
+Bag of Chips:
+    description: "{start_trigger}On {keyword_exploit}:{end_trigger} {keyword_shred} this card and gain 45 chips."
+    image: bag_of_chips.png
+    foil: foil_bag_of_chips.png
+    value: 4
+    suit: diamonds
+    triggers:
+        clicked:
+            - {filename: player_add_chips.gd.j2, chips_player: current_player, chips_value: 45}
+            - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - EXPLOIT
+        - SHRED
+    identifier: all_in_bag_of_chips
+
+Pyramids:
+    description: "{start_trigger}On play:{end_trigger} {keyword_lock}.\\n{start_trigger}On stand:{end_trigger} gain 1 Advantage."
+    image: pyramids.png
+    foil: foil_pyramids.png
+    value: 6
+    suit: special
+    triggers:
+        play: 
+            - {filename: card_set_locked.gd.j2, lock_card: card, locked_value: "true"}
+        stand: 
+            - {filename: player_add_advantage.gd.j2, advantage_value: 1}
+    keywords:
+        - LOCK
+    identifier: all_in_pyramids
+
+PSA 10:
+    description: "{start_trigger}On play:{end_trigger} choose a card to make {keyword_foil}, then {keyword_shred} this card."
+    image: psa_10.png
+    foil: foil_psa_10.png
+    value: 0
+    suit: special
+    triggers:
+        play:
+        - {filename: player_make_choice.gd.j2, current_player_piles: ["play_pile"], other_player_piles: [], ignore_self: "false", sort: "true"}
+        - {filename: card_set_foil.gd.j2, foil_card: choice, foil_value: "true"}
+        - {filename: card_shred.gd.j2, shred_card: card}
+    keywords:
+        - FOIL
+        - SHRED
+    identifier: all_in_psa_10
+
+Electric Mouse:
+    description: "{start_trigger}On hit and {keyword_exploit}:{end_trigger} this card gains 1 energy (currently 0).\\n{start_trigger}On stand:{end_trigger} discharge all energy, dealing 5 damage for each."
+    image: electric_mouse.png
+    foil: foil_electric_mouse.png
+    value: 10
+    suit: clubs
+    triggers:
+        play:
+            - {filename: card_add_x_value.gd.j2, x_value_card: card, add_x_value: 1}
+            - {filename: set_electric_mouse_description.gd.j2}
+        hit: 
+            - {filename: card_add_x_value.gd.j2, x_value_card: card, add_x_value: 1}
+            - {filename: set_electric_mouse_description.gd.j2}
+        clicked:
+            - {filename: card_add_x_value.gd.j2, x_value_card: card, add_x_value: 1}
+            - {filename: set_electric_mouse_description.gd.j2}
+        stand:
+            - {filename: player_deal_damage.gd.j2, damage_player: current_player, damage_value: (card.x_value * 5)}
+            - {filename: card_set_x_value.gd.j2, x_value_card: card, set_x_value: 0}
+            - {filename: set_electric_mouse_description.gd.j2}
+    keywords:
+        - EXPLOIT
+    identifier: all_in_electric_mouse
+
+Graphics Card:
+    description: "{start_trigger}On hit:{end_trigger} Scry 1."
+    image: graphics_card.png
+    foil: foil_graphics_card.png
+    value: 8
+    suit: diamonds
+    triggers:
+        play:
+            - {filename: player_scry.gd.j2, scry_amount: 1}
+        hit:
+            - {filename: player_scry.gd.j2, scry_amount: 1}
+    identifier: all_in_graphics_card
+
+Cardboard:
+    description: "{start_trigger}On play:{end_trigger} Gain 1 shield."
+    image: cardboard.png
+    foil: foil_cardboard.png
+    value: 1
+    suit: spades
+    triggers:
+        play:
+            - {filename: player_add_shield.gd.j2, shield_add_player: current_player, shield_add_value: 1}
+    identifier: all_in_cardboard

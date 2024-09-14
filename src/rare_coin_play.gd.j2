@@ -1,4 +1,0 @@
-if SeededRNG.action_rng.randi_range(0, 1) < 0.5:
-    current_player.get_parent().opponent_last_turn_result = "stay"
-    other_player.emit_signal("stand_effect_completed", card)
-    other_player.enact_all_stand_effects()

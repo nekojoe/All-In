@@ -1,0 +1,6 @@
+var discard_card = {{ discard_card}}
+
+if discard_card.get_parent().name == "Player":
+    current_player.move_card_to_new_pile(discard_card, "play_pile", "discard_pile")
+else:
+    other_player.move_card_to_new_pile(discard_card, "play_pile", "discard_pile")
